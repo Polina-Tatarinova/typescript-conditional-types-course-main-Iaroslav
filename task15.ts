@@ -3,7 +3,9 @@ import { Expect, Equal } from './helpers';
 // Задача: Добавить префикс к ключам объекта (без рекурсии).
 // Описание: Принимает объект T и строку-префикс Prefix. Возвращает объект, ключи которого переименованы в формате "Prefix.Key", а типы значений остались без изменений.
 
-type KeysWithPrefix<T, Prefix extends string> = any;
+type KeysWithPrefix<T, Prefix extends string> = {
+    [K in keyof T as K extends string ? `${Prefix}.${K}` : never] : T[K]
+}
 
 // Проверки (не менять):
 type Input = { a: number; b: string };

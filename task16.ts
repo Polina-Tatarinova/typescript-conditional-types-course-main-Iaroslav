@@ -3,7 +3,9 @@ import { Expect, Equal } from './helpers';
 // Задача: Развернуть (flatten) один уровень вложенности объекта.
 // Описание: Разворачивает вложенные объекты первого уровня в плоскую структуру, где ключи вложенных свойств записываются через точку ("Key.SubKey").
 
-type FlattenOneLevel<T> = any;
+type FlattenOneLevel<T> = {
+    [K in keyof T]: T[K] extends object ? { [P in keyof T[K] as `${K & string}.${P & string}`]: T[K][P] } : { [P in K]: T[K] };
+  }[keyof T]
 
 // Проверки (не менять):
 type Input = { a: number; b: { c: string; d: boolean } };
