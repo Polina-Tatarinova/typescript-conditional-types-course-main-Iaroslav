@@ -6,7 +6,7 @@ import { Expect, Equal } from './helpers';
 // Пример добавления префикса: type Prefix<T> = { [K in keyof T as `get_${K & string}`]: T[K] };
 // Задание: Создайте тип PrefixKeysWithIs<T>, который добавляет префикс "is_" ко всем ключам объекта T.
 
-type PrefixKeysWithIs<T> = any;
+type PrefixKeysWithIs<T> = { [K in keyof T as `is_${K & string}`]: T[K] }
 
 // Проверки (не менять):
 type Test = Expect<Equal<PrefixKeysWithIs<{ active: boolean }>, { is_active: boolean }>>;

@@ -6,7 +6,7 @@ import { Expect, Equal } from './helpers';
 // Пример: type IsString<T> = T extends string ? true : false;
 // Задание: Создайте тип IsNumber<T>, который возвращает true, если T является числом (number), и false в противном случае.
 
-type IsNumber<T> = any;
+type IsNumber<T> = T extends number ? true : false;
 
 // Проверки (не менять):
 type Test1 = Expect<Equal<IsNumber<42>, true>>;

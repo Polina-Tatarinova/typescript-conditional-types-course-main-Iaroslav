@@ -7,7 +7,7 @@ import { Expect, Equal } from './helpers';
 // type OnlyStringProps<T> = { [K in keyof T as T[K] extends string ? K : never]: T[K] };
 // Задание: Создайте тип OnlyBooleanProps<T>, который оставляет в объекте T только те свойства, значения которых имеют тип boolean.
 
-type OnlyBooleanProps<T> = any;
+type OnlyBooleanProps<T> = {[K in keyof T as T[K] extends boolean ? K : never]: T[K]};
 
 // Проверки (не менять):
 type Test = Expect<Equal<OnlyBooleanProps<{ active: boolean; name: string }>, { active: boolean }>>;

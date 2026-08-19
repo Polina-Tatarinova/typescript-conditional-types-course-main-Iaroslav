@@ -4,7 +4,7 @@ import { Expect, Equal } from './helpers';
 // Описание: Возвращает true, если переданный тип T является объектом, и false в противном случае.
 // Внимание: Массивы и примитивы (string, number и т.д.) объектами не считаются.
 
-type IsObject<T> = any;
+type IsObject<T> = T extends object ? T extends any[] ? false : true : false;
 
 // Проверки (не менять):
 type Test3 = Expect<Equal<IsObject<{ a: number }>, true>>;

@@ -6,7 +6,7 @@ import { Expect, Equal } from './helpers';
 // Здесь T — это параметр типа. Если передать number, получится { value: number }.
 // Задание: Создайте тип Wrap<T>, который принимает любой тип T и оборачивает его в объект со свойством data (т.е. { data: T }).
 
-type Wrap<T> = any;
+type Wrap<T> = {data: T}
 
 // Проверки (не менять):
 type Test = Expect<Equal<Wrap<number>, { data: number }>>;
